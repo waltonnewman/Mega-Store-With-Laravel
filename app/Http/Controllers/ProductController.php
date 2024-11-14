@@ -39,6 +39,7 @@ class ProductController extends Controller
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
         'description' => 'nullable|string',
+        'product_description' => 'string',
         'is_variable' => 'required|boolean',
         'price' => 'required|numeric',
         'sale_price' => 'nullable|numeric|lt:price',
@@ -63,6 +64,7 @@ class ProductController extends Controller
     $product = Product::create([
         'name' => $validatedData['name'],
         'description' => $validatedData['description'],
+        'product_description' => $validatedData['product_description'],
         'is_variable' => $validatedData['is_variable'],
         'price' => $validatedData['price'],
         'sale_price' => $validatedData['sale_price'],
@@ -181,6 +183,7 @@ private function createVariants(Product $product, $index, array $validatedData)
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
         'description' => 'nullable|string',
+        'product_description' => 'string',
         'price' => 'required|numeric',
         'sale_price' => 'nullable|numeric|lt:price',
         'is_variable' => 'boolean',

@@ -90,6 +90,11 @@
 
 @include('includes.user_sidebar', ['requestStatus' => $requestStatus]) <!-- Pass the variable here -->
 <div class="container">
+    @if(session('success'))
+                <div class="alert alert-success mt-3" style=" background-color: rgba(0, 200, 0, 0.5); align-items: center; color: white; padding: 10px;">
+                    {{ session('success') }}
+                </div>
+            @endif
     <h1>Your Ordered Products</h1>
 
     @if($products->isEmpty())
@@ -121,7 +126,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('orders.show', $product->id) }}" class="btn btn-info btn-sm">View</a>
+                            <a href="{{ route('orders.show', $product->orders->first()->id) }}" class="btn btn-info btn-sm">View</a>
                             <form action="{{ route('orders.destroy', $product->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this order?');">
                                 @csrf
                                 @method('DELETE')

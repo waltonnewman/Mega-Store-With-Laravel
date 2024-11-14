@@ -48,7 +48,7 @@ Route::patch('/users/products/{product}/edit', [ProductController::class, 'updat
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 Route::post('/orders/{order}/update-status', [CheckoutController::class, 'updateStatus'])->name('orders.updateStatus');
 //Route::get('/oder/{order}', [CheckoutController::class, 'showOrder'])->name('orders.show');
-Route::get('/oders/{order}', [CheckoutController::class, 'showUserOrder'])->name('orders.show');
+Route::get('/users/orders/{order}', [CheckoutController::class, 'showUserOrder'])->name('orders.show');
 
 // Passing Admin Routes through the middleware for authentication
 

@@ -46,7 +46,7 @@
 
     <div class="card">
         <div class="card-header">
-            Order ID: {{ $order->id }}
+           Order ID: {{ $order->id }}
         </div>
         <div class="card-body">
             <h5 class="card-title">Customer Information</h5>
@@ -57,6 +57,7 @@
             <p><strong>Total Amount:</strong> ${{ number_format($order->total, 2) }}</p>
             <p><strong>Payment Method:</strong> {{ $order->payment_method }}</p>
             <p><strong>Status:</strong> {{ $order->status }}</p>
+            <p><strong>Tracking No:</strong> {{ $order->tracking_number }}</p>
 
             <h5 class="card-title">Order Items</h5>
             <ul class="list-group">
@@ -90,24 +91,5 @@
             @endif
         </div>
     </div>
-
-
-    <h5 class="card-title mt-4">Add Tracking Information</h5>
-<form action="{{ route('tracking.create', $order) }}" method="POST">
-    @csrf
-    <div class="form-group">
-        <label for="tracking_number">Tracking Number:</label>
-        <input type="text" name="tracking_number" id="tracking_number" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="carrier">Carrier:</label>
-        <input type="text" name="carrier" id="carrier" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="status">Status:</label>
-        <input type="text" name="status" id="status" class="form-control" required>
-    </div>
-    <button type="submit" class="btn btn-primary mt-2">Add Tracking</button>
-</form>
 </div>
 @endsection

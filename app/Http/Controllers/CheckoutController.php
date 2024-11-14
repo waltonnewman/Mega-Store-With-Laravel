@@ -175,7 +175,7 @@ public function showOrders()
         return redirect()->route('admins.orders')->with('success', 'Product deleted successfully!');
     }
 
-    public function updateStatus(Request $request, Order $order)
+  public function updateStatus(Request $request, Order $order)
 {
     // Validate the incoming request data
     $request->validate([
@@ -185,9 +185,22 @@ public function showOrders()
     // Update the order status
     $order->update(['status' => $request->status]);
 
+    // Find the tracking record associated with the order
+    $tracking = Tracking::where('order_id', $order->id)->first();
+
+    // Check if tracking record exists
+    if ($tracking) {
+        // Update the tracking status
+        $tracking->update(['status' => $request->status]);
+    } else {
+        // Handle the case where the tracking record does not exist
+        return redirect('users/ordered-products')->with('error', 'Tracking record not found.');
+    }
+
     // Redirect back with a success message
-    return redirect()->route('admins.orders')->with('success', 'Order status updated successfully!');
+    return redirect('users/ordered-products')->with('success', 'Order status updated successfully!');
 }
+
 
 public function showOrder(Order $order)
 {

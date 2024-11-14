@@ -9,7 +9,7 @@
     <x-forms.form method="POST" action="/products" enctype="multipart/form-data">
         @csrf
         <x-forms.input label="Title" name="name" placeholder="Enter Product Title" required />
-        <x-forms.input label="Description" name="description" />
+        <x-forms.input label="Short Description" name="description" />
 
         <x-forms.select label="Product Type" name="is_variable" required>
             <option value="0">Simple Product</option>
@@ -21,6 +21,7 @@
 
         <x-forms.divider />
 
+
         <x-forms.label name="categories" label="Categories" />
         @foreach($categories as $category)
             <x-forms.checkbox name="categories[]" :value="$category->id" :id="$category->id" :label="$category->name" />
@@ -29,6 +30,10 @@
         <x-forms.divider />
 
         <x-forms.input label="Product Image" name="image" type="file" required />
+
+        <x-forms.divider />
+
+        <x-forms.input label="Description" name="product_description" />
 
         <x-forms.divider />
 
@@ -42,9 +47,9 @@
                 <hr />
             </div>
         </div>
-
+       
         <button type="button" id="add-variant" style="background-color: #4CAF50; color: white; border: none; padding: 10px 15px; border-radius: 4px;">Add Variant</button>
-
+       
         <x-forms.button>Publish</x-forms.button>
     </x-forms.form>
 
