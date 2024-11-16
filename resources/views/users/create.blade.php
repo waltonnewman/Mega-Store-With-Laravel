@@ -4,7 +4,7 @@
     <x-forms.form method="POST" action="/products" enctype="multipart/form-data">
         @csrf
         <x-forms.input label="Title" name="name" placeholder="Enter Product Title" required />
-        <x-forms.input label="Description" name="description" />
+        <x-forms.input label="Short Description" name="description" />
 
         <x-forms.select label="Product Type" name="is_variable" required>
             <option value="0">Simple Product</option>

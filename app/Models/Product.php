@@ -24,7 +24,7 @@ class Product extends Model
         'image',
         'slug',
         'gallery',
-        'product_description',
+        //'product_description',
     ];
 
      protected $casts = [

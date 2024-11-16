@@ -16,7 +16,7 @@
                 @csrf
                 <input type="hidden" name="name" value="{{ $product->name }}">
                 <input type="hidden" name="id" value="{{ $product->id }}">
-                <input type="text" id="price" name="price" value="{{ $product->sale_price }}">
+                <input type="hidden" id="price" name="price" value="{{ $product->sale_price }}">
                 <input type="hidden" name="variant_id" id="variant_id" value="0">
                 
 
